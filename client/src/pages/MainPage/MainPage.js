@@ -15,10 +15,11 @@ export const MainPage = () => {
     const sendReq = async () => {
         await request('/api/numbers/add', 'POST', { num: num.value })
             .then(resp => {
-                setMessage(prevState => resp.message)
+                setMessage(prevState => `Полученное число ${resp.num}. ${resp.message}`)
                 setActive(true)
             }).catch(err => {
-                setMessage(prevState => err.message)
+                setMessage(prevState => `${err.message}`)
+                console.log(err.message)
                 setActive(true)
             })
         num.setValue('')

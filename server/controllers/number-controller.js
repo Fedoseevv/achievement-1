@@ -4,7 +4,8 @@ class NumberController {
     async addNumber(req, res, next) {
         try {
             const {num} = req.body;
-            if (num === undefined || isNaN(parseInt(num, 10))) {
+            const parsed = parseInt(num, 10)
+            if (num === undefined || isNaN(parsed)) {
                 return res.status(404).json({message: "No 'num' parameter specified or not digit!"})
             }
 
@@ -15,7 +16,7 @@ class NumberController {
                 await numberQueries.addNumber(num);
                 const msg = "OK! Число успешно добавлено!";
                 console.log(msg)
-                return res.status(201).json({message: msg});
+                return res.status(201).json({message: msg, num: parsed + 1});
             } else {
                 const msg = "Не выполняется одно из условий задачи!"
                 console.log(msg);
