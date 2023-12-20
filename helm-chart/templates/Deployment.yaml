@@ -4,6 +4,8 @@ metadata:
   name: {{ .Values.app.name }}
   namespace: {{ .Values.namespace }}
 spec:
+  nodeSelector:
+    node13: "yes"
   replicas: {{ .Values.replicas }}
   selector:
     matchLabels:
@@ -18,15 +20,15 @@ spec:
           image: "{{ .Values.app.path }}:{{ .Values.app.version }}"
           resources:
 {{ toYaml .Values.resources | indent 12 }}
-          imagePullPolicy: Never
+          imagePullPolicy: Always
           env:
             - name: DB_NAME
-              value: {{ .Values.env.DB_NAME }}
+              value: "postgres"
             - name: DB_USER
-              value: {{ .Values.env.DB_USER }}
+              value: "postgres"
             - name: DB_PASSWORD
-              value: {{ .Values.env.DB_PASSWORD }}
+              value: "password"
             - name: DB_HOST
-              value: {{ .Values.env.DB_HOST }}
+              value: "10.100.109.158"
             - name: DB_PORT
-              value: {{ .Values.env.DB_PORT }}
+              value: "5432"

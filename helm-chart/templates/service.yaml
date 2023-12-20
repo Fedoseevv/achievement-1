@@ -6,6 +6,8 @@ metadata:
   name:  {{ .Values.app.name }}
   namespace: {{ .Values.namespace }}
 spec:
+  selector:
+    app: server
   type: {{ .Values.service.type }}
   ports: 
 {{ toYaml .Values.service.ports | indent 2 }}
