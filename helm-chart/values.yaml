@@ -4,7 +4,7 @@ namespace: ns-26
 app:
   name: "server"
   path: "geexmo/docker-images"
-  version: "server"
+  version: "server1"
 
 resources:
   requests:
