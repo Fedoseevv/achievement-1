@@ -8,7 +8,7 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-  - host: server.ns-26
+  - host: name-26.hse.ru
     http:
       paths:
       - backend:
